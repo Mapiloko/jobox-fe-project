@@ -256,7 +256,8 @@ export default {
         this.endDate
       ) {
         if(this.startDate > this.endDate){
-          this.dates = true
+          this.dates = true;
+          this.err = false;
         }
         else{
           html2pdf(this.$refs.document, {
