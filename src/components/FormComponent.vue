@@ -261,11 +261,11 @@ export default {
         }
         else{
           html2pdf(this.$refs.document, {
-            margin: 1,
+            margin: [0, 0.5, 0, 0.5],
             filename: "document.pdf",
             image: { type: "jpeg", quality: 0.98 },
             html2canvas: { dpi: 192, letterRendering: true },
-            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+            jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
           });
           this.err = false
           this.dates = false

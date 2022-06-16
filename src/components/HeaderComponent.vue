@@ -1,8 +1,8 @@
 <template>
-  <p class="header" style="margin-top: 0px; margin-bottom: 0">
+  <p class="header" style="margin-top: 70px; margin-bottom: 0">
     Recruitment rates and terms agreement
   </p>
-  <hr style="margin-top: 5px; background-color: black; margin-bottom: 50px" />
+  <hr style="margin-top: 5px; background-color: black; margin-bottom: 80px" />
 </template>
 <script>
 export default {
