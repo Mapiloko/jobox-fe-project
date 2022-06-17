@@ -15,6 +15,7 @@
         <div class="clientname">
           <input
             style="
+              padding-left: 20px;
               height: 20px;
               outline: none;
               border: none;
@@ -41,6 +42,7 @@
                 BMF Attorney’s fee
                 <input
                   style="
+                    padding-left: 20px;
                     height: 20px;
                     outline: none;
                     border: none;
@@ -148,14 +150,14 @@
                   Notwithstanding the date of signature hereof, this fixed term
                   contract shall be deemed to have commenced on the
                   <input
-                    style="height: 15px; outline: none; font-weight: bold"
+                    class="input-date"
                     type="date"
                     v-model="startDate"
                     placeholder="Enter Start Date"
                   />
                   and will terminate, without further notice, on the
                   <input
-                    style="height: 15px; outline: none; font-weight: bold"
+                    class="input-date"
                     type="date"
                     v-model="endDate"
                     placeholder="Enter End Date"
@@ -174,6 +176,8 @@
           </li>
         </ol>
 
+        <hr style="margin-top: 40px" />
+        <p class="page">PAGE 2 OF 3</p>
         <div class="html2pdf__page-break"></div>
         <HeaderComponent></HeaderComponent>
 
@@ -189,7 +193,7 @@
               margin-bottom: 0;
               width: 40%;
               float: left;
-              height: 1px;
+              height: 0.5px;
             "
           />
           <br />
@@ -206,7 +210,7 @@
               margin-bottom: 0;
               width: 40%;
               float: left;
-              height: 1px;
+              height: 0.3px;
             "
           />
           <br />
@@ -215,9 +219,16 @@
           </p>
         </div>
       </div>
+
+      <hr style="margin-top: 360px" />
+      <p class="page">PAGE 3 OF 3</p>
     </form>
-    <p v-if="err" style="background-color: red;color: white; " >Please Enter All Required Fields</p>
-    <p v-if="dates" style="background-color: red;color: white; " >Start date must be smaller than end date</p>
+    <p v-if="err" style="background-color: red; color: white">
+      Please Enter All Required Fields
+    </p>
+    <p v-if="dates" style="background-color: red; color: white">
+      Start date must be smaller than end date
+    </p>
     <button @click="exportToPDF">Save and Export to PDF</button>
     <br />
     <br />
@@ -243,7 +254,7 @@ export default {
       startDate: "",
       endDate: "",
       err: false,
-      dates: false
+      dates: false,
     };
   },
   methods: {
@@ -255,11 +266,10 @@ export default {
         this.startDate &&
         this.endDate
       ) {
-        if(this.startDate > this.endDate){
+        if (this.startDate > this.endDate) {
           this.dates = true;
           this.err = false;
-        }
-        else{
+        } else {
           html2pdf(this.$refs.document, {
             margin: [0, 0.5, 0, 0.5],
             filename: "document.pdf",
@@ -267,11 +277,11 @@ export default {
             html2canvas: { dpi: 192, letterRendering: true },
             jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
           });
-          this.err = false
-          this.dates = false
+          this.err = false;
+          this.dates = false;
         }
       } else {
-        this.err = true
+        this.err = true;
       }
     },
   },
@@ -279,11 +289,15 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  display: grid;
+  justify-content: center;
+  font-size: 8px;
+}
 .container {
   display: grid;
   justify-content: center;
   color: black;
-  /* padding: 0 30px; */
 }
 
 #form {
@@ -330,10 +344,17 @@ export default {
 .circled {
   list-style: circle;
 }
-/* .circled li:before {
-  content: "o";
-  font-size: 11pt;
-} */
+.input-date {
+  height: 15px;
+  outline: none;
+  font-weight: bold;
+  padding-bottom: 2px;
+  padding-left: 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
 .appointment {
   list-style: none;
 }
